@@ -1,0 +1,82 @@
+---
+layout: page
+tagline:
+---
+
+{% for post in paginator.posts %}
+
+<article class="home">
+
+  <span class="post-date">
+    {{ post.date | date: "%d" }}
+    {% assign month = post.date | date: "%m" %}
+    	{% case month %}
+  		{% when '1' %}Enero
+  		{% when '2' %}Febrero
+  		{% when '3' %}Marzo
+  		{% when '4' %}Abril
+  		{% when '5' %}Mayo
+  		{% when '6' %}Junio
+  		{% when '7' %}Julio
+  		{% when '8' %}Agosto
+  		{% when '9' %}Septiembre
+  		{% when '10' %}Octubre
+  		{% when '11' %}Noviembre
+  		{% when '12' %}Diciembre
+	{% endcase %}
+	{{ post.date | date: "%Y" }}
+  </span>
+
+  <h2>
+    <a href="{{ site.BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
+  </h2>
+
+  <div>
+    {% if post.fullview %}
+    {{ post.content }}
+    {% else %}
+    {% if post.shortinfo %}
+    {{ post.shortinfo }}
+    {% elsif post.description %}
+    {{ post.description }}
+    {% else %}
+    {{ post.excerpt }}
+    {% endif %}
+    {% endif %}
+  </div>
+
+</article>
+{% endfor %}
+<hr/>
+
+<ul class="pager"> 
+
+  {% if paginator.previous_page %}
+  <li class="previous">
+    {% if paginator.previous_page == 1 %}
+    <a href="{{ site.BASE_PATH }}/">&larr; Nuevos</a>
+    {% else %}
+    <a href="{{ site.BASE_PATH }}/{{ site.paginate_path | replace: ':num', paginator.previous_page }}">&larr; Nuevos</a>
+    {% endif %}
+  </li>
+  {% else %}
+  <li class="previous disabled">
+    <a>&larr; Nuevos</a>
+  </li>
+  {% endif %}
+  
+  <li>
+    <span class="page_number">Página: {{ paginator.page }} de {{ paginator.total_pages }}</span>
+  </li>
+
+  {% if paginator.next_page %}
+  <li class="next">
+    <a href="{{ site.BASE_PATH }}/{{ site.paginate_path | replace: ':num', paginator.next_page }}">Antiguos &rarr;</a>
+  </li>
+  {% else %}
+  <li class="next disabled">
+    <a>Antiguos &rarr;</a>        
+  </li>
+  {% endif %}
+
+</ul>

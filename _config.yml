@@ -1,0 +1,38 @@
+# visit https://github.com/mojombo/jekyll/wiki/Configuration for more settings
+
+paginate: 10 # pagination based on number of posts
+paginate_path: "page:num"
+exclude: ["README.md"] # files to exclude
+highlighter: rouge
+markdown: kramdown
+#disqus: dbyll
+#google_analytics: dbyll
+title: develoop.co
+
+defaults:
+  -
+    scope:
+      path: "" # empty string for all files
+    values:
+      title: develoop.co
+
+description: Stylish Jekyll Theme
+author:
+  name: Adrián Santalla
+  github: asantalla
+  twitter: asantalla
+  linkedin: adrián-santalla-romero-de-ávila-9a781133
+  bio: Ingeniero de Software apasionado por el desarrollo de aplicaciones móviles para Android.  
+  email_md5: 8cf55b97f56c8e602b13a15f0f9a1be1
+
+rss_path: feed.xml
+categories_path: categories.html
+tags_path: tags.html
+
+# set it as url of an image
+# sidebar_background_image: https://www.dropbox.com/s/g9h23zrycedxtk5/sky.png?raw=1
+
+BASE_PATH:
+
+gems:
+  - jekyll-paginate
